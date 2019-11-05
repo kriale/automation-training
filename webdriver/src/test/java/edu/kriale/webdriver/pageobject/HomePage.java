@@ -1,4 +1,4 @@
-package pageobject.page;
+package edu.kriale.webdriver.pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

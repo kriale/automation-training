@@ -1,11 +1,11 @@
-package pageobject.test;
+package edu.kriale.webdriver.test;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageobject.page.HotelsSearchParamsPage;
-import pageobject.page.HotelsSearchResultsPage;
-import pageobject.page.HotelsWithFlightSearchParamsPage;
+import edu.kriale.webdriver.pageobject.HotelsSearchParamsPage;
+import edu.kriale.webdriver.pageobject.HotelsSearchResultsPage;
+import edu.kriale.webdriver.pageobject.HotelsWithFlightSearchParamsPage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
