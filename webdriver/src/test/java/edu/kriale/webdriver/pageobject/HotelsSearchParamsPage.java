@@ -23,7 +23,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     @FindBy(xpath="//*[@id='hotel-rooms-hlp']")
     private WebElement roomsField;
 
-    @FindBy(xpath="//*[@id='hotel-1-children-hlp']")
+    @FindBy(xpath="//*[@id='hotel-1-adults-hlp']")
     private WebElement adultsField;
 
     @FindBy(xpath="//*[@id='hotel-1-children-hlp']")
@@ -69,17 +69,17 @@ public class HotelsSearchParamsPage extends AbstractPage {
     }
 
     public void fillRoomsField(int roomsNumber) {
-        roomsField.click();
+        roomsField.sendKeys(String.valueOf(roomsNumber));
         focusAway();
     }
 
     public void fillAdultsField(int adultsNumber) {
-        adultsField.click();
+        adultsField.sendKeys(String.valueOf(adultsNumber));
         focusAway();
     }
 
     public void fillChildrenField(int childrenNumber) {
-        childrenField.click();
+        childrenField.sendKeys(String.valueOf(childrenNumber));
         focusAway();
     }
 
