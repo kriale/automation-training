@@ -20,7 +20,8 @@ public class SignInPage extends AbstractPage {
 
     @Override
     public SignInPage openPage() {
-        throw new RuntimeException("Can't open sign in page directly by URL. Use menu of the home page.");
+        throw new RuntimeException("Can't open sign in page directly by URL. " +
+                "Use menu of the home page.");
     }
 
     public HomePage signInAccount(String email, String password) {

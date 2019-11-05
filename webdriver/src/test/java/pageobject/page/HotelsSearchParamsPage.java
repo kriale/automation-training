@@ -1,5 +1,6 @@
 package pageobject.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HotelsSearchParamsPage extends AbstractPage {
     private static final String HOTELS_SEARCH_PARAMS_PAGE_URL = "https://www.ebookers.com/Hotels";
+    private static final String HOTEL_DESTINATION_FIELD_ID = "hotel-destination-hlp";
 
     @FindBy(xpath="//*[@id='hotel-destination-hlp']")
     private WebElement goingToField;
@@ -41,7 +43,8 @@ public class HotelsSearchParamsPage extends AbstractPage {
     public AbstractPage openPage() {
         driver.get(HOTELS_SEARCH_PARAMS_PAGE_URL);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.invisibilityOf(goingToField));
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(By.id(HOTEL_DESTINATION_FIELD_ID)));
         return this;
     }
 
