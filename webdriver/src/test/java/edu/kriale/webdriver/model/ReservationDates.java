@@ -1,6 +1,7 @@
 package edu.kriale.webdriver.model;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class ReservationDates {
     private String checkInDate;
@@ -12,12 +13,25 @@ public class ReservationDates {
         this.checkOutDate = checkOutDate;
     }
 
-    public String getCheckInDate() {
-        return checkInDate;
+    public ReservationDates() {
     }
 
-    public void setCheckInDate(String checkInDate) {
+    public Optional<String> getCheckInDate() {
+        return Optional.ofNullable(checkInDate);
+    }
+
+    public ReservationDates setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
+        return this;
+    }
+
+    public Optional<String> getCheckOutDate() {
+        return Optional.ofNullable(checkOutDate);
+    }
+
+    public ReservationDates setCheckOutDate(String checkOutDate) {
+        this.checkOutDate = checkOutDate;
+        return this;
     }
 
     @Override

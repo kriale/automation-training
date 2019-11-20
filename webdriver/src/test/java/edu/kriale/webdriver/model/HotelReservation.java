@@ -1,44 +1,54 @@
 package edu.kriale.webdriver.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class HotelReservation {
     private String goingTo;
     private ReservationDates reservationDates;
-    private HotelReservationRoom hotelReservationRoom;
+    private List<HotelReservationRoom> hotelReservationRooms = new ArrayList<>();
 
 
     public HotelReservation(String goingTo,
                             ReservationDates reservationDates,
-                            HotelReservationRoom hotelReservationRoom) {
+                            List<HotelReservationRoom> hotelReservationRooms) {
         this.goingTo = goingTo;
         this.reservationDates = reservationDates;
-        this.hotelReservationRoom = hotelReservationRoom;
+        this.hotelReservationRooms = hotelReservationRooms;
     }
 
-    public String getGoingTo() {
-        return goingTo;
+    public HotelReservation() {
     }
 
-    public void setGoingTo(String goingTo) {
+    public Optional<String> getGoingTo() {
+        return Optional.ofNullable(goingTo);
+    }
+
+    public HotelReservation setGoingTo(String goingTo) {
         this.goingTo = goingTo;
+        return this;
     }
 
-    public ReservationDates getReservationDates() {
-        return reservationDates;
+    public Optional<ReservationDates> getReservationDates() {
+        return Optional.ofNullable(reservationDates);
     }
 
-    public void setReservationDates(ReservationDates reservationDates) {
+    public HotelReservation setReservationDates(ReservationDates reservationDates) {
         this.reservationDates = reservationDates;
+        return this;
     }
 
-    public HotelReservationRoom getHotelReservationRoom() {
-        return hotelReservationRoom;
+    public List<HotelReservationRoom> getHotelReservationRooms() {
+        return hotelReservationRooms;
     }
 
-    public void setHotelReservationRoom(HotelReservationRoom hotelReservationRoom) {
-        this.hotelReservationRoom = hotelReservationRoom;
+    public HotelReservation setHotelReservationRooms(List<HotelReservationRoom> hotelReservationRooms) {
+        this.hotelReservationRooms = hotelReservationRooms;
+        return this;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -47,12 +57,12 @@ public class HotelReservation {
         HotelReservation that = (HotelReservation) o;
         return Objects.equals(goingTo, that.goingTo) &&
                 Objects.equals(reservationDates, that.reservationDates) &&
-                Objects.equals(hotelReservationRoom, that.hotelReservationRoom);
+                Objects.equals(hotelReservationRooms, that.hotelReservationRooms);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(goingTo, reservationDates, hotelReservationRoom);
+        return Objects.hash(goingTo, reservationDates, hotelReservationRooms);
     }
 
     @Override
@@ -60,7 +70,7 @@ public class HotelReservation {
         return "HotelReservation{" +
                 "goingTo='" + goingTo + '\'' +
                 ", reservationDates=" + reservationDates +
-                ", hotelReservationRoom=" + hotelReservationRoom +
+                ", hotelReservationRooms=" + hotelReservationRooms +
                 '}';
     }
 }
