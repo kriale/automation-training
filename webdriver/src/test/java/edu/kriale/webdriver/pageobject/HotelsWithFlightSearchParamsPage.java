@@ -12,8 +12,9 @@ public class HotelsWithFlightSearchParamsPage extends HotelsSearchParamsPage {
         super(driver);
     }
 
-    public void fillFlyingFromField(String flyingFrom) {
+    public HotelsWithFlightSearchParamsPage fillFlyingFromField(String flyingFrom) {
         flyingFromField.sendKeys(flyingFrom);
         focusAway();
+        return this;
     }
 }

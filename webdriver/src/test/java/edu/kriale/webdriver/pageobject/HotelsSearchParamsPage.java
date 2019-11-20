@@ -40,7 +40,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     }
 
     @Override
-    public AbstractPage openPage() {
+    public HotelsSearchParamsPage openPage() {
         driver.get(HOTELS_SEARCH_PARAMS_PAGE_URL);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions
@@ -53,34 +53,40 @@ public class HotelsSearchParamsPage extends AbstractPage {
         return new HotelsSearchResultsPage(driver);
     }
 
-    public void fillGoingToField(String destination) {
+    public HotelsSearchParamsPage fillGoingToField(String destination) {
         goingToField.sendKeys(destination);
         focusAway();
+        return this;
     }
 
-    public void fillCheckInField(String checkInDate) {
+    public HotelsSearchParamsPage fillCheckInField(String checkInDate) {
         checkInField.sendKeys(checkInDate);
         focusAway();
+        return this;
     }
 
-    public void fillCheckOutField(String checkOutDate) {
+    public HotelsSearchParamsPage fillCheckOutField(String checkOutDate) {
         checkOutField.sendKeys(checkOutDate);
         focusAway();
+        return this;
     }
 
-    public void fillRoomsField(int roomsNumber) {
+    public HotelsSearchParamsPage fillRoomsField(int roomsNumber) {
         roomsField.sendKeys(String.valueOf(roomsNumber));
         focusAway();
+        return this;
     }
 
-    public void fillAdultsField(int adultsNumber) {
+    public HotelsSearchParamsPage fillAdultsField(int adultsNumber) {
         adultsField.sendKeys(String.valueOf(adultsNumber));
         focusAway();
+        return this;
     }
 
-    public void fillChildrenField(int childrenNumber) {
+    public HotelsSearchParamsPage fillChildrenField(int childrenNumber) {
         childrenField.sendKeys(String.valueOf(childrenNumber));
         focusAway();
+        return this;
     }
 
     public HotelsWithFlightSearchParamsPage enableAddFlightCheckbox() {
