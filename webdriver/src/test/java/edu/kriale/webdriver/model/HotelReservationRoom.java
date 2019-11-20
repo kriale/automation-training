@@ -1,31 +1,37 @@
 package edu.kriale.webdriver.model;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class HotelReservationRoom {
-    private int adultsNumber;
-    private int childrenNumber;
+    private Integer adultsNumber;
+    private Integer childrenNumber;
 
 
-    public HotelReservationRoom(int adultsNumber, int childrenNumber) {
+    public HotelReservationRoom(Integer adultsNumber, Integer childrenNumber) {
         this.adultsNumber = adultsNumber;
         this.childrenNumber = childrenNumber;
     }
 
-    public int getAdultsNumber() {
-        return adultsNumber;
+    public HotelReservationRoom() {
     }
 
-    public void setAdultsNumber(int adultsNumber) {
+    public Optional<Integer> getAdultsNumber() {
+        return Optional.ofNullable(adultsNumber);
+    }
+
+    public HotelReservationRoom setAdultsNumber(Integer adultsNumber) {
         this.adultsNumber = adultsNumber;
+        return this;
     }
 
-    public int getChildrenNumber() {
-        return childrenNumber;
+    public Optional<Integer> getChildrenNumber() {
+        return Optional.ofNullable(childrenNumber);
     }
 
-    public void setChildrenNumber(int childrenNumber) {
+    public HotelReservationRoom setChildrenNumber(Integer childrenNumber) {
         this.childrenNumber = childrenNumber;
+        return this;
     }
 
     @Override
@@ -33,8 +39,8 @@ public class HotelReservationRoom {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HotelReservationRoom that = (HotelReservationRoom) o;
-        return adultsNumber == that.adultsNumber &&
-                childrenNumber == that.childrenNumber;
+        return Objects.equals(adultsNumber, that.adultsNumber) &&
+                Objects.equals(childrenNumber, that.childrenNumber);
     }
 
     @Override
