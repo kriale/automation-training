@@ -1,5 +1,8 @@
 package edu.kriale.webdriver.pageobject;
 
+import java.util.List;
+import edu.kriale.webdriver.model.HotelReservation;
+import edu.kriale.webdriver.model.HotelReservationRoom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +38,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     @FindBy(id = "hotel-add-flight-checkbox-hlp")
     private WebElement addFlightCheckbox;
 
+
     public HotelsSearchParamsPage(WebDriver driver) {
         super(driver);
     }
@@ -51,6 +55,27 @@ public class HotelsSearchParamsPage extends AbstractPage {
     public HotelsSearchResultsPage search() {
         searchButton.click();
         return new HotelsSearchResultsPage(driver);
+    }
+
+    public HotelsSearchParamsPage fillFromParams(HotelReservation params) {
+        params.getGoingTo().ifPresent(this::fillGoingToField);
+        params.getReservationDates().ifPresent(e -> {
+            e.getCheckInDate().ifPresent(this::fillCheckInField);
+            e.getCheckOutDate().ifPresent(this::fillCheckOutField);
+        });
+        fillRoomsList(params.getHotelReservationRooms());
+        return this;
+    }
+
+    private void fillRoomsList(List<HotelReservationRoom> rooms) {
+        if (rooms.size() > 0) {
+            fillRoom(rooms.get(0));
+        }
+    }
+
+    private void fillRoom(HotelReservationRoom room) {
+        room.getAdultsNumber().ifPresent(this::fillAdultsField);
+        room.getChildrenNumber().ifPresent(this::fillChildrenField);
     }
 
     public HotelsSearchParamsPage fillGoingToField(String destination) {

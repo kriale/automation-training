@@ -2,35 +2,28 @@ package edu.kriale.webdriver.test;
 
 import edu.kriale.webdriver.pageobject.HotelsSearchParamsPage;
 import edu.kriale.webdriver.pageobject.HotelsSearchResultsPage;
+import edu.kriale.webdriver.service.HotelReservationCreator;
+import edu.kriale.webdriver.service.TestDataReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class HotelSearchResultPageTests extends CommonConditions {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final String EXPECTED_EQUAL_DEPARTURE_AND_ARRIVAL_ALERT_MESSAGE =
             "We were unable to find any flights for your package. " +
                     "Please adjust your search or continue booking your hotel separately.";
+    private static final String PROPERTY_NAME_FLYING_FROM = "test-data.case4.flying-from";
 
     @Test
     @DisplayName("test-case-4: Search hotel with flight from A to A")
     public void searchHotelsWithFlightFromAToA() {
-        LocalDate date = LocalDate.now().plusDays(1);
-
         HotelsSearchParamsPage page = new HotelsSearchParamsPage(driver);
         HotelsSearchResultsPage resultsPage = page.openPage()
-                .fillGoingToField("Minsk, Minsk Region, Belarus")
-                .fillCheckInField(date.format(FORMATTER))
-                .fillCheckOutField(date.plusDays(2).format(FORMATTER))
-                .fillRoomsField(1)
-                .fillAdultsField(2)
+                .fillFromParams(HotelReservationCreator.withSimpleCredentialsFromProperty())
                 .enableAddFlightCheckbox()
-                .fillFlyingFromField("Minsk, Belarus (MSQ-Minsk Intl.)")
+                .fillFlyingFromField(TestDataReader.getTestData(TestDataReader
+                        .getTestData(PROPERTY_NAME_FLYING_FROM)))
                 .search();
-
         Assertions.assertEquals(EXPECTED_EQUAL_DEPARTURE_AND_ARRIVAL_ALERT_MESSAGE,
                 resultsPage.getAlertMessage());
     }
