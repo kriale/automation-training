@@ -1,5 +1,6 @@
 package edu.kriale.webdriver.pageobject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +13,7 @@ public class HotelsSearchResultsPage extends AbstractPage {
 
     public HotelsSearchResultsPage(WebDriver driver) {
         super(driver);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.visibilityOf(alert7Message));
+        waitUntil(ExpectedConditions.visibilityOf(alert7Message));
     }
 
     public AbstractPage openPage() {
