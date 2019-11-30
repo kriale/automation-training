@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HotelsSearchParamsPage extends AbstractPage {
     private static final String HOTELS_SEARCH_PARAMS_PAGE_URL = "https://www.ebookers.com/Hotels";
     private static final String HOTEL_DESTINATION_FIELD_ID = "hotel-destination-hlp";
+    private static final String ATTRIBUTE_VALUE = "value";
 
     @FindBy(xpath="//*[@id='hotel-destination-hlp']")
     private WebElement goingToField;
@@ -46,13 +47,12 @@ public class HotelsSearchParamsPage extends AbstractPage {
     @Override
     public HotelsSearchParamsPage openPage() {
         driver.get(HOTELS_SEARCH_PARAMS_PAGE_URL);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(By.id(HOTEL_DESTINATION_FIELD_ID)));
+        waitUntil(ExpectedConditions.presenceOfElementLocated(By.id(HOTEL_DESTINATION_FIELD_ID)));
         return this;
     }
 
     public HotelsSearchResultsPage search() {
+        waitUntil(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
         return new HotelsSearchResultsPage(driver);
     }
@@ -120,6 +120,6 @@ public class HotelsSearchParamsPage extends AbstractPage {
     }
 
     public String getCheckOutFieldText() {
-        return checkOutField.getAttribute("value");
+        return checkOutField.getAttribute(ATTRIBUTE_VALUE);
     }
 }

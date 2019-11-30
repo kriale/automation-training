@@ -27,9 +27,7 @@ public class HomePage extends AbstractPage {
     @Override
     public HomePage openPage() {
         driver.get(HOME_PAGE_URL);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(By.id(MENU_ACCOUNT_BUTTON_ID)));
+        waitUntil(ExpectedConditions.presenceOfElementLocated(By.id(MENU_ACCOUNT_BUTTON_ID)));
         return this;
     }
 
