@@ -1,6 +1,6 @@
-package Planes;
+package com.github.vitalliuss.aircompany.tests.planes;
 
-import models.MilitaryType;
+import com.github.vitalliuss.aircompany.tests.models.MilitaryType;
 
 import java.util.Objects;
 
