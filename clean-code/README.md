@@ -1,1 +1,1 @@
-clean code tast is on the 'clean-code' branch
+Clean code tast is on the 'clean-code' branch in this directory and in the 'webdriver' project.
