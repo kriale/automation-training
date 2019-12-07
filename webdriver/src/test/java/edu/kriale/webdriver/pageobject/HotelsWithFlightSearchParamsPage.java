@@ -15,6 +15,7 @@ public class HotelsWithFlightSearchParamsPage extends HotelsSearchParamsPage {
 
     public HotelsWithFlightSearchParamsPage fillFlyingFromField(String flyingFrom) {
         flyingFromField.sendKeys(flyingFrom);
+        logger.info("Filled 'Flying from' field.");
         focusAway();
         return this;
     }

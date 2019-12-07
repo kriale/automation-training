@@ -44,6 +44,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     @Override
     public HotelsSearchParamsPage openPage() {
         driver.get(HOTELS_SEARCH_PARAMS_PAGE_URL);
+        logger.info("Open Hotels Search Param Page.");
         waitUntil(ExpectedConditions.presenceOfElementLocated(By.id(HOTEL_DESTINATION_FIELD_ID)));
         return this;
     }
@@ -51,6 +52,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     public HotelsSearchResultsPage search() {
         waitUntil(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
+        logger.info("Clicked Search button.");
         return new HotelsSearchResultsPage();
     }
 
@@ -61,6 +63,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
             e.getCheckOutDate().ifPresent(this::fillCheckOutField);
         });
         fillRoomsList(params.getHotelReservationRooms());
+        logger.info("Filled hotels search params.");
         return this;
     }
 
@@ -73,47 +76,55 @@ public class HotelsSearchParamsPage extends AbstractPage {
     private void fillRoom(HotelReservationRoom room) {
         room.getAdultsNumber().ifPresent(this::fillAdultsField);
         room.getChildrenNumber().ifPresent(this::fillChildrenField);
+        logger.info("Filled room params: " + room);
     }
 
 
     public HotelsSearchParamsPage fillGoingToField(String destination) {
         goingToField.sendKeys(destination);
+        logger.info("Filled 'Going-to; field.");
         focusAway();
         return this;
     }
 
     public HotelsSearchParamsPage fillCheckInField(String checkInDate) {
         checkInField.sendKeys(checkInDate);
+        logger.info("Filled 'Check-in' field.");
         focusAway();
         return this;
     }
 
     public HotelsSearchParamsPage fillCheckOutField(String checkOutDate) {
         checkOutField.sendKeys(checkOutDate);
+        logger.info("Filled 'Check-out' field.");
         focusAway();
         return this;
     }
 
     public HotelsSearchParamsPage fillRoomsField(int roomsNumber) {
         roomsField.sendKeys(String.valueOf(roomsNumber));
+        logger.info("Filled 'Rooms' field.");
         focusAway();
         return this;
     }
 
     public HotelsSearchParamsPage fillAdultsField(int adultsNumber) {
         adultsField.sendKeys(String.valueOf(adultsNumber));
+        logger.info("Filled 'Adults' field.");
         focusAway();
         return this;
     }
 
     public HotelsSearchParamsPage fillChildrenField(int childrenNumber) {
         childrenField.sendKeys(String.valueOf(childrenNumber));
+        logger.info("Filled 'Children' field.");
         focusAway();
         return this;
     }
 
     public HotelsWithFlightSearchParamsPage enableAddFlightCheckbox() {
         addFlightCheckbox.click();
+        logger.info("Enabled 'Add flight' checkbox.");
         return new HotelsWithFlightSearchParamsPage();
     }
 

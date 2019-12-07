@@ -26,15 +26,20 @@ public class SignInPage extends AbstractPage {
         fillEmailField(email);
         fillPasswordField(password);
         submitButton.click();
+        logger.info("Clicked 'Sign In' button.");
         return new HomePage();
     }
 
     private void fillEmailField(String email) {
         emailField.sendKeys(email);
+        logger.info("Filled 'email' field.");
+        focusAway();
     }
 
     private void fillPasswordField(String password) {
         emailField.sendKeys(password);
+        logger.info("Filled 'password' field.");
+        focusAway();
     }
 
 }
