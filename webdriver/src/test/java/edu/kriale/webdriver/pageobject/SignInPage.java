@@ -1,8 +1,10 @@
 package edu.kriale.webdriver.pageobject;
 
 import edu.kriale.webdriver.model.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignInPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='gss-signin-email']")
@@ -15,6 +17,7 @@ public class SignInPage extends AbstractPage {
     private WebElement submitButton;
 
     public SignInPage() {
+        waitUntil(ExpectedConditions.elementToBeClickable(emailField));
     }
 
     @Override
@@ -38,7 +41,7 @@ public class SignInPage extends AbstractPage {
     }
 
     private void fillPasswordField(String password) {
-        emailField.sendKeys(password);
+        passwordField.sendKeys(password);
         logger.info("Filled 'password' field.");
         focusAway();
     }
