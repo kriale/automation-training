@@ -1,6 +1,5 @@
 package edu.kriale.webdriver.pageobject;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,8 +13,7 @@ public class SignInPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='gss-signin-submit']")
     private WebElement submitButton;
 
-    public SignInPage(WebDriver driver) {
-        super(driver);
+    public SignInPage() {
     }
 
     @Override
@@ -28,7 +26,7 @@ public class SignInPage extends AbstractPage {
         fillEmailField(email);
         fillPasswordField(password);
         submitButton.click();
-        return new HomePage(driver);
+        return new HomePage();
     }
 
     private void fillEmailField(String email) {

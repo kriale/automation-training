@@ -15,9 +15,8 @@ public class HotelSearchParamsPageTests extends CommonConditions {
 
     @Test(testName = "test-case-3: Search hotel for less than one day staying")
     public void searchHotelsForLessThanOneDayStaying() {
-        HotelsSearchParamsPage page = new HotelsSearchParamsPage(driver);
-        page.openPage()
-                .fillFromParams(HotelReservationCreator.withLessThanOneDayStayingFromProperty());
+        HotelsSearchParamsPage page = new HotelsSearchParamsPage();
+        page.openPage().fillFromParams(HotelReservationCreator.withLessThanOneDayStayingFromProperty());
         Assert.assertEquals(LocalDate.now()
                 .plusDays(Integer.parseInt(TestDataReader.getTestData(PROPERTY_NAME_EXPECTED_CHECK_OUT)))
                 .format(FORMATTER), page.getCheckOutFieldText());

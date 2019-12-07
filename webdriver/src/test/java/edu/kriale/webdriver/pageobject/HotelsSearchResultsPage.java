@@ -1,18 +1,14 @@
 package edu.kriale.webdriver.pageobject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HotelsSearchResultsPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='alert7']/h5")
     private WebElement alert7Message;
 
-    public HotelsSearchResultsPage(WebDriver driver) {
-        super(driver);
+    public HotelsSearchResultsPage() {
         waitUntil(ExpectedConditions.visibilityOf(alert7Message));
     }
 

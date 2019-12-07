@@ -1,11 +1,9 @@
 package edu.kriale.webdriver.pageobject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends AbstractPage {
     private final static String HOME_PAGE_URL = "https://www.ebookers.com/";
@@ -20,8 +18,7 @@ public class HomePage extends AbstractPage {
     @FindBy(id="tab-hotel-tab-hlp")
     private WebElement hotelsSearchParamsPageMenuButton;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage() {
     }
 
     @Override
@@ -34,11 +31,11 @@ public class HomePage extends AbstractPage {
     public SignInPage openSignInPage() {
         menuAccountButton.click();
         accountMenuSignInButton.click();
-        return new SignInPage(driver);
+        return new SignInPage();
     }
 
     public HotelsSearchParamsPage openHotelsSearchParamsPage() {
         hotelsSearchParamsPageMenuButton.click();
-        return new HotelsSearchParamsPage(driver);
+        return new HotelsSearchParamsPage();
     }
 }

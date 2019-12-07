@@ -15,7 +15,7 @@ public class HotelSearchResultPageTests extends CommonConditions {
 
     @Test(testName = "test-case-4: Search hotel with flight from A to A")
     public void searchHotelsWithFlightFromAToA() {
-        HotelsSearchParamsPage page = new HotelsSearchParamsPage(driver);
+        HotelsSearchParamsPage page = new HotelsSearchParamsPage();
         HotelsSearchResultsPage resultsPage = page.openPage()
                 .fillFromParams(HotelReservationCreator.withSimpleCredentialsFromProperty())
                 .enableAddFlightCheckbox()

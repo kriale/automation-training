@@ -4,11 +4,9 @@ import java.util.List;
 import edu.kriale.webdriver.model.HotelReservation;
 import edu.kriale.webdriver.model.HotelReservationRoom;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HotelsSearchParamsPage extends AbstractPage {
     private static final String HOTELS_SEARCH_PARAMS_PAGE_URL = "https://www.ebookers.com/Hotels";
@@ -40,8 +38,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     private WebElement addFlightCheckbox;
 
 
-    public HotelsSearchParamsPage(WebDriver driver) {
-        super(driver);
+    public HotelsSearchParamsPage() {
     }
 
     @Override
@@ -54,7 +51,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
     public HotelsSearchResultsPage search() {
         waitUntil(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
-        return new HotelsSearchResultsPage(driver);
+        return new HotelsSearchResultsPage();
     }
 
     public HotelsSearchParamsPage fillFromParams(HotelReservation params) {
@@ -116,7 +113,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
 
     public HotelsWithFlightSearchParamsPage enableAddFlightCheckbox() {
         addFlightCheckbox.click();
-        return new HotelsWithFlightSearchParamsPage(driver);
+        return new HotelsWithFlightSearchParamsPage();
     }
 
     public String getCheckOutFieldText() {
