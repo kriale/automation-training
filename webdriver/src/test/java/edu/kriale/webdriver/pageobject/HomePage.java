@@ -18,6 +18,9 @@ public class HomePage extends AbstractPage {
     @FindBy(id="tab-hotel-tab-hlp")
     private WebElement hotelsSearchParamsPageMenuButton;
 
+    @FindBy(id="userGreetingName")
+    private WebElement userGreetingNameSpan;
+
     public HomePage() {
     }
 
@@ -40,5 +43,13 @@ public class HomePage extends AbstractPage {
         logger.info("Start open Hotels Search Params Page...");
         hotelsSearchParamsPageMenuButton.click();
         return new HotelsSearchParamsPage();
+    }
+
+    public String getUserGreetingName() {
+        return userGreetingNameSpan.getText();
+    }
+
+    public boolean UserGreetingNameSpanIsExist() {
+        return userGreetingNameSpan != null;
     }
 }
