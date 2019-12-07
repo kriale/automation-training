@@ -35,7 +35,9 @@ public class HomePage extends AbstractPage {
     public SignInPage openSignInPage() {
         logger.info("Start open Sign In Page...");
         menuAccountButton.click();
+        logger.info("Clicked menu 'Account' button");
         accountMenuSignInButton.click();
+        logger.info("Clicked menu 'Sign In' button");
         return new SignInPage();
     }
 
