@@ -75,6 +75,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
         room.getChildrenNumber().ifPresent(this::fillChildrenField);
     }
 
+
     public HotelsSearchParamsPage fillGoingToField(String destination) {
         goingToField.sendKeys(destination);
         focusAway();

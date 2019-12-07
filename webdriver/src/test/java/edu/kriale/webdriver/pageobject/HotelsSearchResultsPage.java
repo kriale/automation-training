@@ -8,6 +8,7 @@ public class HotelsSearchResultsPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='alert7']/h5")
     private WebElement alert7Message;
 
+
     public HotelsSearchResultsPage() {
         waitUntil(ExpectedConditions.visibilityOf(alert7Message));
     }
