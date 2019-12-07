@@ -1,5 +1,6 @@
 package edu.kriale.webdriver.pageobject;
 
+import edu.kriale.webdriver.model.Account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -22,9 +23,9 @@ public class SignInPage extends AbstractPage {
                 "Use menu of the home page.");
     }
 
-    public HomePage signInAccount(String email, String password) {
-        fillEmailField(email);
-        fillPasswordField(password);
+    public HomePage signIn(Account account) {
+        account.getEmail().ifPresent(this::fillEmailField);
+        account.getPassword().ifPresent(this::fillPasswordField);
         submitButton.click();
         logger.info("Clicked 'Sign In' button.");
         return new HomePage();
