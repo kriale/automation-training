@@ -2,6 +2,7 @@ package edu.kriale.webdriver.test;
 
 import edu.kriale.webdriver.pageobject.HomePage;
 import edu.kriale.webdriver.service.AccountCreator;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignInPageTests extends CommonConditions {
@@ -11,5 +12,6 @@ public class SignInPageTests extends CommonConditions {
                 .openPage()
                 .openSignInPage()
                 .signIn(AccountCreator.withCredentialsFromProperty());
+        Assert.assertTrue(page.userGreetingNameSpanIsExist());
     }
 }
