@@ -49,7 +49,7 @@ public class HomePage extends AbstractPage {
         return userGreetingNameSpan.getText();
     }
 
-    public boolean UserGreetingNameSpanIsExist() {
+    public boolean userGreetingNameSpanIsExist() {
         return userGreetingNameSpan != null;
     }
 }
