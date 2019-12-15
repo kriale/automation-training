@@ -13,6 +13,10 @@ public class ReservationDates {
         this.checkOutDate = checkOutDate;
     }
 
+    public ReservationDates(String checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
     public ReservationDates() {
     }
 
