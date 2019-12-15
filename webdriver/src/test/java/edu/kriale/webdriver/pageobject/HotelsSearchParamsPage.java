@@ -37,6 +37,14 @@ public class HotelsSearchParamsPage extends AbstractPage {
     @FindBy(id = "hotel-add-flight-checkbox-hlp")
     private WebElement addFlightCheckbox;
 
+    @FindBy(id = "tab-hotelCar-tab-hlp-hc")
+    private WebElement hotelsWithCarSectionButton;
+
+    @FindBy(id = "tab-hotel-tab-hlp")
+    private WebElement hotelsOnlySectionButton;
+
+    @FindBy(xpath = "//a[@class='error-link']")
+    private WebElement errorAlert;
 
     public HotelsSearchParamsPage() {
     }
@@ -50,10 +58,15 @@ public class HotelsSearchParamsPage extends AbstractPage {
     }
 
     public HotelsSearchResultsPage search() {
+        clickSearch();
+        return new HotelsSearchResultsPage();
+    }
+
+    public HotelsSearchParamsPage clickSearch() {
         waitUntil(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
         logger.info("Clicked Search button.");
-        return new HotelsSearchResultsPage();
+        return this;
     }
 
     public HotelsSearchParamsPage fillFromParams(HotelReservation params) {
@@ -67,13 +80,13 @@ public class HotelsSearchParamsPage extends AbstractPage {
         return this;
     }
 
-    private void fillRoomsList(List<HotelReservationRoom> rooms) {
+    protected void fillRoomsList(List<HotelReservationRoom> rooms) {
         if (rooms.size() > 0) {
             fillRoom(rooms.get(0));
         }
     }
 
-    private void fillRoom(HotelReservationRoom room) {
+    protected void fillRoom(HotelReservationRoom room) {
         room.getAdultsNumber().ifPresent(this::fillAdultsField);
         room.getChildrenNumber().ifPresent(this::fillChildrenField);
         logger.info("Filled room params: " + room);
@@ -82,7 +95,7 @@ public class HotelsSearchParamsPage extends AbstractPage {
 
     public HotelsSearchParamsPage fillGoingToField(String destination) {
         goingToField.sendKeys(destination);
-        logger.info("Filled 'Going-to; field.");
+        logger.info("Filled 'Going-to' field.");
         focusAway();
         return this;
     }
@@ -128,7 +141,24 @@ public class HotelsSearchParamsPage extends AbstractPage {
         return new HotelsWithFlightSearchParamsPage();
     }
 
+    public HotelsWithCarSearchParamsPage openHotelWithCarSection() {
+        hotelsWithCarSectionButton.click();
+        logger.info("Select 'Hotels + Car' section");
+        return new HotelsWithCarSearchParamsPage();
+    }
+
+    public HotelsSearchParamsPage openHotelOnlySection() {
+        hotelsOnlySectionButton.click();
+        logger.info("Select 'Hotels Only' section");
+        return this;
+    }
+
     public String getCheckOutFieldText() {
         return checkOutField.getAttribute(ATTRIBUTE_VALUE);
+    }
+
+    public String getAlertErrorMessage() {
+        logger.info("Get error alert message text");
+        return errorAlert.getText().trim();
     }
 }
