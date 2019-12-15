@@ -1,0 +1,1 @@
+Logging task is implemented on the 'framework2' branch in the 'webdriver' project.
