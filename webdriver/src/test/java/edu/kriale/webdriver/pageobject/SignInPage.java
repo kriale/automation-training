@@ -14,7 +14,7 @@ public class SignInPage extends AbstractPage {
     private WebElement passwordField;
 
     @FindBy(xpath = "//*[@id='submitButton']")
-    private WebElement submitButton;
+    public WebElement submitButton;
 
     public SignInPage() {
         waitUntil(ExpectedConditions.elementToBeClickable(emailField));
